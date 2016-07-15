@@ -1,0 +1,4 @@
+var mymap = L.map('main_map').setView([<%= @current_location["lat"] %>, <%= @current_location["lon"]%>], 5);
+
+
+var mymap = L.map('main_map').setView([37.620584, -97.259945], 5);

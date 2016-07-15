@@ -1,0 +1,33 @@
+<div class="burrito-search form-inline">
+    <%= form_tag current_location_path do %>
+    <div class="form-group burrito-search-bar">
+        <%= text_field_tag(:location, "", class: "form-control", placeholder: "Ye Address goes 'ere") %>
+    </div>
+    <div class="form-group">
+        <%= submit_tag("Ahoy!", class: "btn btn-default") %>
+    </div>
+    <% end %>
+</div>
+
+<div id="main_map"></div>
+
+<script type="text/javascript">
+    var mymap = L.map('main_map').setView([
+        <%= @current_location["lat"] %>, <%= @current_location["lon"]%>
+    ], <%= @current_location["zoom"] %>);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'bentopi.0m113af1',
+        accessToken: 'pk.eyJ1IjoiYmVudG9waSIsImEiOiJjaXFueDZhamwwMWNmZnlubmN3Mjkwa2N3In0.KDH8Lcc77hResaVfMezoJA'
+    }).addTo(mymap);
+
+    <% if @search_done %>
+      L.marker([<%= @current_location["lat"] %>, <%= @current_location["lon"]%>]).addTo(mymap).bindPopup("You are here!");
+      <% @venues.each do |venue|%>
+      L.marker([<%= venue["location"]["lat"] %>, <%= venue["location"]["lng"] %>]).addTo(mymap).bindPopup("<%= venue["name"] %>");
+      <% end %>
+    <% end %>
+
+
+</script>
