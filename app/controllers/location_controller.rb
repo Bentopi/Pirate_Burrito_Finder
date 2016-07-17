@@ -6,9 +6,13 @@ class LocationController < ApplicationController
 
     results = JSON.parse(Http.get("http://locationiq.org/v1/search.php?key=adff1ce289577c56596f&format=json&q=#{CGI::escape(@location)}").body)
 
-    session[:location] = results.first
-    session[:location]["zoom"] = 14
-    redirect_to root_path
+    if results != []
+      session[:location] = results.first
+      session[:location]["zoom"] = 14
+      redirect_to root_path
+    else
+      redirect_to root_path, notice: "Address not found!"
+    end
   end
 
   def reset

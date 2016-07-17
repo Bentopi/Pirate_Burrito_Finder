@@ -37,9 +37,20 @@ body {
 width: 80vw;
 }
 .notices {
-  z-index: 2
+  position: fixed;
+
+  width: 100%;
+  bottom: 5px;
+  z-index: 2;
 }
 .reset-btn {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+.new-form {
+  padding-top: 10px;
+}
+.map-title {
+  font-size: 20px;
+  padding-right: 10px;
 }

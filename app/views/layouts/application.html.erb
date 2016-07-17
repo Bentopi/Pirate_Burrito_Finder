@@ -15,8 +15,11 @@
       <% end %>
     </div>
     <div class="navbar-text">
-      <span class="burrito-find" >Ye'd be a Bilge-Sucking Scallywag not to plunder a Burrito! <small class="quote"> ~Capt. Guacbeard</small></span>
+      <span class="burrito-find" >Locate nearby Burritos</span>
     </div>
+    <!-- <div class="navbar-text">
+      <span class="burrito-find" >Ye'd be a Bilge-Sucking Scallywag not to plunder a Burrito! <small class="quote"> ~Capt. Guacbeard</small></span>
+    </div> -->
     <div class="navbar-right sign-in">
       <% if @current_user %>
       <div class="navbar-text">
@@ -30,21 +33,26 @@
     <div class="navbar-text navbar-right reset-btn">
       <%= link_to "Reset Map", reset_map_path, class: "btn btn-danger navbar-btn" %>
     </div>
+    <div class="navbar-text navbar-right reset-btn">
+      <% if @current_user %>
+      <%= link_to "Your Treasure Maps", treasuremaps_path, class: "btn btn-danger navbar-btn" %>
+      <% end %>
+    </div>
   </div>
 </nav>
-<!-- <div class="container notices">
+<div class="container notices">
   <% if notice %>
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-info text-center" role="alert">
       <%= notice %>
     </div>
   <% end %>
 
   <% if alert %>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger text-center" role="alert">
       <%= alert %>
     </div>
   <% end %>
-</div> -->
+</div>
 <%= yield %>
 
 </body>

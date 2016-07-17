@@ -11,22 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714211324) do
+ActiveRecord::Schema.define(version: 20160717170804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "photos", force: :cascade do |t|
-    t.integer  "vacation_id"
+    t.integer  "treasuremap_id"
     t.string   "location"
     t.string   "latitude"
     t.string   "longitude"
     t.string   "photo_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "photos", ["vacation_id"], name: "index_photos_on_vacation_id", using: :btree
+  add_index "photos", ["treasuremap_id"], name: "index_photos_on_treasuremap_id", using: :btree
+
+  create_table "treasuremaps", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "treasuremaps", ["user_id"], name: "index_treasuremaps_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -38,15 +47,6 @@ ActiveRecord::Schema.define(version: 20160714211324) do
     t.string   "password_digest"
   end
 
-  create_table "vacations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "vacations", ["user_id"], name: "index_vacations_on_user_id", using: :btree
-
-  add_foreign_key "photos", "vacations"
-  add_foreign_key "vacations", "users"
+  add_foreign_key "photos", "treasuremaps"
+  add_foreign_key "treasuremaps", "users"
 end

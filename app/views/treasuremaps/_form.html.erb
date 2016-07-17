@@ -1,0 +1,14 @@
+<div class="well">
+<%= form_for @treasuremap do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Where are these Burritos? (City / Country)" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary"%>
+  </div>
+<% end %>
+
+</div>

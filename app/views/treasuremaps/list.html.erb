@@ -1,0 +1,13 @@
+<div class="container">
+
+
+  <h3>  <%= link_to "Create New Treasuremap", new_treasuremap_path, class: "btn btn-primary" %> </h3><br>
+    <% @treasuremaps.each do |treasuremap| %>
+
+      <div class="col-xs-12">
+        <%= link_to treasuremap.name, treasuremap_path(id: treasuremap.id), class: "map-title" %>
+        <%= link_to "Edit", edit_treasuremap_path(id: treasuremap.id), class: "btn btn-default" %>
+      </div>
+
+    <% end %>
+</div>
