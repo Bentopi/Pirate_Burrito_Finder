@@ -17,7 +17,9 @@ gem 'refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 gem 'refile-postgres'
 gem 'simple_form'
-
+group :production do
+  gem 'rails_12factor'
+end
 
 
 gem 'sdoc', '~> 0.4.0', group: :doc

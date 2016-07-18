@@ -1,8 +1,15 @@
 language: ruby
 rvm:
-  - 2.3.1
+- 2.3.1
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: leLKDRThUDYhA+4j1gPqVfCepfB40lRu1Nf7yBoI0hywIQg0TnitfLmp4fc6nA0EemQic2tEwzCPLGj1wh+slCJeyzm37tCfP6StvVL/FjPxJpqVSxTFXR2PSdJ5jsu1+ES/KG7kWnKh9ReK3ltZyVcPui/m1nwbELnpUeQe7h/mYJ0dgp4TM/f5xuHJ4A4ZfIdIMW1/vFfB3srgLJYNgdApiRKjNHF5TxUBZ/BJB6NEi1A0z3vbGqtrKboKDeCS5go5ztpIZrVw2DmV4bP0TF4p7L2RXGvHLFl7lUVlMUj/oVMgR8yFibSBLBqXYwh5V0WUqEFKCzzfmbjbMomwoX5oWRkKvm8j8YrIcWyMiFfhjnF8qVon3MnRIzD8dVBcPUsp9g8rxhpN1y56/CSXNOdbRy+nTNLAAeaxzAwQ+BjJ3DWPKqChwy70zEhtxVF4F95OfpcwvA7jS54sPhexGMEjW4X2JQ3mH27x1w71XLoyRa81mysvEFKDVs6FPfQyDr/Z4k+Ue50LJ9NuquuTwB5DaS7aFY6nQaSLX+aQL67YJCOfIVjumJnkqgXyxVYaKAOZo2gjBfGNPWGfvmOshqJe49Z2bQuDRNzXMaDKPGyW+kUdQxjNMVgyMlIZK125ZS9KWac800czdcTXfvWjURiwVNrxDiZSfD592H/Nsuk=
+  app: burritofind
+  on:
+    repo: Bentopi/Pirate_Burrito_Finder
