@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="well">
+      <%= simple_form_for @photo, url:create_photo_path do |f| %>
+        <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <%= f.input :attachment, as: :file, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="col-xs-6">
+            <div class="form-group">
+              <%= f.submit "Add Burrito", class: "btn btn-primary btn-block"%>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+  </div>
+</div>

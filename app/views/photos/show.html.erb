@@ -1,0 +1,11 @@
+<div class="container">
+  <br>
+  <h1 class="text-center"> <%= @photo.description %> </h1>
+  <h4 class="text-center">Get yours at: <%= @photo.location %> </h4>
+
+<div class="text-center">
+  <%= image_tag attachment_url(@photo, :attachment, :fill, 300, 300, format: "jpg") %>
+</div>
+
+
+</div>

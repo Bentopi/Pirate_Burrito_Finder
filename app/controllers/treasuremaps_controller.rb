@@ -4,6 +4,7 @@ class TreasuremapsController < ApplicationController
   end
 
   def show
+    @photo = Photo.new
     @treasuremap = Treasuremap.find_by id: params[:id]
     results = JSON.parse(Http.get("http://locationiq.org/v1/search.php?key=adff1ce289577c56596f&format=json&q=#{CGI::escape(@treasuremap.name)}").body)
 
@@ -48,8 +49,19 @@ class TreasuremapsController < ApplicationController
 
   def destroy
     @treasuremap = Treasuremap.find_by id: params[:id]
+    @treasuremap.photos.destroy
     @treasuremap.destroy
     redirect_to treasuremaps_path, notice: "Map Deleted!"
+  end
+
+
+  def show_photo
+    @treasuremap = Treasuremap.find_by id: params[:id]
+  end
+
+  def new_photo
+    @treasuremap = Treasuremap.find_by id: params[:id]
+    @photo = Photo.new
   end
 
 end

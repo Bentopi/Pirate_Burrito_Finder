@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# user= User.create(email: "robert@robert.com", password: "12345678", password_confirmation: "12345678")
 #
-# Examples:
+# treasuremap = user.treasuremaps.create(name: "Houston, TX 77063")
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# photo_1 = treasuremap.photos.new location: "7705 Westheimer Road, Houston, TX 77063", description: "Uberrito Burrito Bowl!",
+# File.open("#{Rails.root}/app/assets/images/uberrito_bowl.jpg", "rb") do |file|
+#   photo_1.photo = file
+# end
+# photo_1.save!

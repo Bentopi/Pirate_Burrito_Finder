@@ -10,4 +10,16 @@
           id: 'bentopi.0m113af1',
           accessToken: 'pk.eyJ1IjoiYmVudG9waSIsImEiOiJjaXFueDZhamwwMWNmZnlubmN3Mjkwa2N3In0.KDH8Lcc77hResaVfMezoJA'
       }).addTo(mymap);
+
+      <% @treasuremap.photos.each do |photo|%>
+      L.marker([<%= photo.latitude %>, <%= photo.longitude %>]).addTo(mymap).bindPopup
+
+      ("<a href='/treasuremaps/<%=photo.treasuremap.id%>/photos/<%=photo.id%>'><%=photo.description%></a>");
+      <% end %>
   </script>
+
+
+
+  <div class="new-photo">
+  <%= link_to "Upload Burrito!", new_photo_path %>
+  </div>

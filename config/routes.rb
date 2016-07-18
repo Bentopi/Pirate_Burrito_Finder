@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   delete 'treasuremaps/:id' => 'treasuremaps#destroy', as: :delete_treasuremap
   patch 'treasuremaps/:id' => 'treasuremaps#update'
 
+  get 'treasuremaps/:id/photos/new' => 'photos#new', as: :new_photo
+  post 'treasuremaps/:id/photos/' => 'photos#create', as: :create_photo
+  get 'treasuremaps/:id/photos/:photo_id' => 'photos#show', as: :photo
+
   get 'reset_location' => 'location#reset', as: :reset_map
 
   post 'current_location' => 'location#locate', as: :current_location
@@ -20,4 +24,5 @@ Rails.application.routes.draw do
   post 'sign_in' => 'sessions#create'
   delete 'sign_in' => 'sessions#delete'
 
+  get 'api/photos' => 'api/photos#list'
 end

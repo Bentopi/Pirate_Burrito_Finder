@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717170804) do
+ActiveRecord::Schema.define(version: 20160718203652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,19 @@ ActiveRecord::Schema.define(version: 20160717170804) do
     t.string   "location"
     t.string   "latitude"
     t.string   "longitude"
-    t.string   "photo_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "attachment_id"
+    t.string   "description"
   end
 
   add_index "photos", ["treasuremap_id"], name: "index_photos_on_treasuremap_id", using: :btree
+
+  create_table "refile_attachments", force: :cascade do |t|
+    t.string "namespace", null: false
+  end
+
+  add_index "refile_attachments", ["namespace"], name: "index_refile_attachments_on_namespace", using: :btree
 
   create_table "treasuremaps", force: :cascade do |t|
     t.integer  "user_id"
@@ -39,9 +46,6 @@ ActiveRecord::Schema.define(version: 20160717170804) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
-    t.string   "location"
-    t.string   "latitude"
-    t.string   "longitude"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"

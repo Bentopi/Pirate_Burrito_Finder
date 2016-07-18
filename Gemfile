@@ -13,8 +13,10 @@ gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'leaflet-rails'
 gem 'http'
-
-
+gem 'refile', require: 'refile/rails'
+gem 'refile-mini_magick'
+gem 'refile-postgres'
+gem 'simple_form'
 
 
 
