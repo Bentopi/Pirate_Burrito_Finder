@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  use_doorkeeper
+
   root "welcome#index"
 
   get '/treasuremaps' => 'treasuremaps#list', as: :treasuremaps

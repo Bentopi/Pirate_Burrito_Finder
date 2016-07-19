@@ -17,6 +17,8 @@ gem 'refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 gem 'refile-postgres'
 gem 'simple_form'
+gem 'doorkeeper'
+
 group :production do
   gem 'rails_12factor'
 end
