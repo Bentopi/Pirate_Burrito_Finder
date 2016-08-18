@@ -23,7 +23,7 @@
         <span class="burrito-find navbar-text" >Locate nearby Burritos</span>
     <% end %>
 
-    <div class="navbar-right sign-in">
+    <!-- <div class="navbar-right sign-in">
       <% if @current_user %>
       <div class="navbar-text">
         Signed in as <%= @current_user.email %>
@@ -32,7 +32,7 @@
       <% else %>
           <%= link_to "Sign In", sign_in_path, class: "btn btn-primary navbar-btn" %>
       <% end %>
-    </div>
+    </div> -->
     <div class="navbar-text navbar-right reset-btn">
       <%= link_to "Reset Map", reset_map_path, class: "btn btn-danger navbar-btn" %>
     </div>

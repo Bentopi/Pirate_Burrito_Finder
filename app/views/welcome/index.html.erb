@@ -25,7 +25,7 @@
     <% if @search_done %>
       L.marker([<%= @current_location["lat"] %>, <%= @current_location["lon"]%>]).addTo(mymap).bindPopup("You are here!");
       <% @venues.each do |venue|%>
-      L.marker([<%= venue["location"]["lat"] %>, <%= venue["location"]["lng"] %>]).addTo(mymap).bindPopup("<%= venue["name"] %>");
+      L.marker([<%= venue["location"]["lat"] %>, <%= venue["location"]["lng"] %>]).addTo(mymap).bindPopup("<a href=<%= venue["url"] %>><%= venue["name"] %></a> <br> <%= venue["location"]["address"] %> <br> <%= venue["location"]["city"] %>, <%= venue["location"]["postalCode"] %>");
       <% end %>
     <% end %>
 
