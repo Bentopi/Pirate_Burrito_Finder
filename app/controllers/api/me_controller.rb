@@ -1,4 +1,4 @@
-class Api::MeController < Api::V1::ApiController
+class Api::MeController < Api::ApiController
   before_action :doorkeeper_authorize!
 
 
